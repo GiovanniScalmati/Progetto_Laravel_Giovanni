@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AdminMail;
+use App\Mail\ContactMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PublicController extends Controller
 {
@@ -73,8 +76,39 @@ return view("index_films",['films'=>$films]);
          }
     }
 
+// FUnziona per la vista di contatto 
+
+public function contactUs() {
+
+    return view ("contactUs");
+
+    }
+
+// Funzione per l'invio di dati
+
+public function submitContact(Request $request) {
+
+    $user = $request->input('user');
+    $email = $request->input('email');
+    $tel = $request->input('tel');
+    $message = $request->input('message');
+
+
+
+
+    $userContact = compact('user', 'message');
+    $userContactForAdmin = compact('user', 'email','tel','message');
+    Mail::to($email)->send(new ContactMail($userContact));
+    Mail::to('admin@125.it')->send(new AdminMail($userContactForAdmin));
+
+
+    return redirect(route('welcome'))->with('message','grazie per averci scritto');
+
+    }
 
 }
+
+
 
     
 

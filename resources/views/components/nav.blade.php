@@ -16,7 +16,7 @@
             <a class="nav-link" href="{{route('index_films')}}">Indice Film</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
+            <a class="nav-link" href="{{route('contact_us')}}">Contattaci</a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" aria-disabled="true">Disabled</a>

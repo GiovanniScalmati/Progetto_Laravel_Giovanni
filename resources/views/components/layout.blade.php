@@ -9,14 +9,14 @@
 </head>
 <body>
 
-    @if (Route::currentRouteName()=="welcome")
+    {{-- @if (Route::currentRouteName()=="welcome") --}}
     <x-nav/>
  
-    @else 
+    {{-- @else 
 
     <x-search_nav/>
 
-    @endif
+    @endif --}}
 
 
 
